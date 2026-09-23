@@ -45,3 +45,13 @@ CREATE TABLE Consultas (
     FOREIGN KEY (codm) REFERENCES Medicos(codm),
     FOREIGN KEY (codp) REFERENCES Pacientes(codp)
 );
+
+ALTER TABLE Funcionarios ADD COLUMN nroa INT;
+
+CREATE UNIQUE INDEX idx_medicos_cpf ON Medicos(CPF);
+CREATE INDEX idx_medicos_nroa ON Medicos(nroa);
+CREATE INDEX idx_pacientes_doenca ON Pacientes(doenca);
+
+DROP INDEX idx_pacientes_doenca ON Pacientes;
+
+ALTER TABLE Funcionarios DROP COLUMN cargo, DROP COLUMN nroa;
